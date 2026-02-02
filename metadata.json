@@ -1,0 +1,8 @@
+{
+  "name": "浅虫ＴＭ巡回",
+  "description": "A mobile-optimized field data entry and viewing application that integrates with Google Sheets for data storage, featuring GPS mapping and multi-photo support.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

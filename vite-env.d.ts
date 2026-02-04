@@ -1,5 +1,5 @@
-// Fix: Removed triple-slash reference to 'vite/client' as the type definition file was not found in the environment.
-// Manually defining ImportMeta and process.env types to maintain type safety for the build process.
+// Fixed: Removed the reference to 'vite/client' which caused a "type definition file not found" error.
+// The necessary interface declarations for ImportMeta and NodeJS.ProcessEnv are already provided manually below.
 
 interface ImportMetaEnv {
   readonly VITE_GOOGLE_SCRIPT_URL: string;

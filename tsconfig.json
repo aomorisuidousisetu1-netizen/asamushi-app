@@ -19,10 +19,7 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
-    "esModuleInterop": true,
-
-    /* Types */
-    "types": ["node", "vite/client"]
+    "esModuleInterop": true
   },
   "include": ["**/*.ts", "**/*.tsx", "vite-env.d.ts"],
   "exclude": ["node_modules"]

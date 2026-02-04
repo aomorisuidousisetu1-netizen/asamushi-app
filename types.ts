@@ -1,4 +1,3 @@
-
 export enum OnOffStatus {
   ON = 'ON',
   OFF = 'OFF'
@@ -34,10 +33,6 @@ export interface RecordData {
   power100V: string;              // 100V電力
   
   // 共通
-  location: {
-    lat: number;
-    lng: number;
-  };
   photos: string[];
   remarks: string;
   createdAt: number;

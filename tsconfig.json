@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -23,7 +22,7 @@
     "esModuleInterop": true,
 
     /* Types */
-    "types": ["node"]
+    "types": ["node", "vite/client"]
   },
   "include": ["**/*.ts", "**/*.tsx", "vite-env.d.ts"],
   "exclude": ["node_modules"]

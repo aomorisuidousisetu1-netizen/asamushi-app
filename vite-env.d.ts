@@ -1,5 +1,4 @@
-// Fixed: Removed the reference to 'vite/client' which caused a "type definition file not found" error.
-// The necessary interface declarations for ImportMeta and NodeJS.ProcessEnv are already provided manually below.
+/// <reference types="vite/client" />
 
 interface ImportMetaEnv {
   readonly VITE_GOOGLE_SCRIPT_URL: string;

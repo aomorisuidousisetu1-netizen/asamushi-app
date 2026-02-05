@@ -93,8 +93,8 @@ const App: React.FC = () => {
     return new Date(`${fiscalYear}-04-01`);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.BaseSyntheticEvent) => {
+    e?.preventDefault();
     
     if (!formData.facilityStatus) {
       setValidationError(true);
@@ -307,7 +307,7 @@ const App: React.FC = () => {
       <footer className="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 p-4 shadow-[0_-8px_20px_rgba(0,0,0,0.1)] safe-pb z-40">
         <div className="max-w-2xl mx-auto">
           <button 
-            onClick={handleSubmit} 
+            onClick={() => handleSubmit()} 
             disabled={appState === 'loading'} 
             className="w-full flex items-center justify-center gap-2 py-5 px-6 bg-blue-600 text-white text-lg font-bold rounded-2xl shadow-lg shadow-blue-200 active:scale-[0.98] transition-all disabled:opacity-50"
           >

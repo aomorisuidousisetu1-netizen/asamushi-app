@@ -4,23 +4,17 @@ import { SwitchStatus, FacilityStatus } from './types';
 export const SWITCH_OPTIONS: SwitchStatus[] = ['ON', 'OFF'];
 export const STATUS_OPTIONS: FacilityStatus[] = ['良', '不可'];
 
-/**
- * GASのURL設定
- * Vercelの環境変数 GOOGLE_SCRIPT_URL から取得します。
- * 設定されていない場合はデフォルトのURLを使用します。
- */
 const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbzX9CPXHW93X4oKwVqZRwPjQEFeCFsaeDMH0B-KektszU_JL0w2eawZf3ZIx_W5bWzN/exec';
 
-// Viteの define により、ビルド時に process.env.GOOGLE_SCRIPT_URL が文字列に置き換わります。
 const getApiUrl = (): string => {
   try {
-    // @ts-ignore: Vite will replace this during build
-    const envUrl = process.env.GOOGLE_SCRIPT_URL;
-    if (envUrl && envUrl !== "undefined" && envUrl.startsWith('http')) {
-      return envUrl;
+    // 実行環境（ブラウザ/ビルド時）の両方でエラーが出ないよう window や global を経由してアクセスを試みる
+    const env = (window as any).process?.env?.GOOGLE_SCRIPT_URL || (globalThis as any).process?.env?.GOOGLE_SCRIPT_URL;
+    if (env && env !== "undefined" && env.startsWith('http')) {
+      return env;
     }
   } catch (e) {
-    // processが未定義の環境でもエラーにしない
+    // エラー時はデフォルトを使用
   }
   return DEFAULT_URL;
 };

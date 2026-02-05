@@ -1,8 +1,7 @@
 {
-  "name": "浅虫ＴＭ巡回",
-  "description": "A mobile-optimized field data entry and viewing application that integrates with Google Sheets for data storage, featuring GPS mapping and multi-photo support.",
+  "name": "浅虫ＴＭ巡回アプリ",
+  "description": "施設巡回記録を管理するための高機能PWA。Googleスプレッドシートへのデータ同期、カメラ撮影、過去データとの比較機能を備えています。",
   "requestFramePermissions": [
-    "camera",
-    "geolocation"
+    "camera"
   ]
 }

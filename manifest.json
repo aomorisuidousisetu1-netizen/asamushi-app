@@ -1,0 +1,18 @@
+
+{
+  "name": "浅虫ＴＭ巡回記録",
+  "short_name": "浅虫巡回",
+  "description": "施設巡回記録管理システム",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1087/1087080.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

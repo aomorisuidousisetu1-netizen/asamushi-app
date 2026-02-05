@@ -7,15 +7,21 @@ export const STATUS_OPTIONS: FacilityStatus[] = ['良', '不可'];
 const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbzX9CPXHW93X4oKwVqZRwPjQEFeCFsaeDMH0B-KektszU_JL0w2eawZf3ZIx_W5bWzN/exec';
 
 const getApiUrl = (): string => {
-  // Viteの define により、ビルド時に process.env.GOOGLE_SCRIPT_URL という文字列が直接置換されます
+  // 1. Viteの標準的な環境変数 (VITE_GOOGLE_SCRIPT_URL)
+  const viteEnv = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+  if (viteEnv) return viteEnv;
+
+  // 2. vite.config.ts で置換された process.env.GOOGLE_SCRIPT_URL
   try {
-    const envUrl = process.env.GOOGLE_SCRIPT_URL;
-    if (envUrl && typeof envUrl === 'string' && envUrl.startsWith('http')) {
-      return envUrl;
+    // @ts-ignore
+    const processEnv = process.env.GOOGLE_SCRIPT_URL;
+    if (processEnv && processEnv.startsWith('http')) {
+      return processEnv;
     }
   } catch (e) {
-    // 置換がうまくいかない場合や開発環境用のフォールバック
+    // process が未定義のブラウザ環境でもエラーにならないようにする
   }
+
   return DEFAULT_URL;
 };
 

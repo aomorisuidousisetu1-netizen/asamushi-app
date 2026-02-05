@@ -5,9 +5,15 @@ export const SWITCH_OPTIONS: SwitchStatus[] = ['ON', 'OFF'];
 export const STATUS_OPTIONS: FacilityStatus[] = ['良', '不可'];
 
 /**
- * 💡 ここに、手順2-6でコピーした「ウェブアプリURL」を貼り付けてください。
+ * Vercelの環境変数を読み込みます。
+ * ビルド時に vite.config.ts で定義された値が注入されます。
  */
-export const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbzX9CPXHW93X4oKwVqZRwPjQEFeCFsaeDMH0B-KektszU_JL0w2eawZf3ZIx_W5bWzN/exec';
+const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbzX9CPXHW93X4oKwVqZRwPjQEFeCFsaeDMH0B-KektszU_JL0w2eawZf3ZIx_W5bWzN/exec';
+
+// process が未定義の場合のエラーを防止します
+export const SHEETS_API_URL = (typeof process !== 'undefined' && process.env?.GOOGLE_SCRIPT_URL) 
+  ? process.env.GOOGLE_SCRIPT_URL 
+  : DEFAULT_URL;
 
 export const FIELD_LABELS = {
   inspectionDate: '巡回日',

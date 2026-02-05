@@ -7,17 +7,17 @@ export const STATUS_OPTIONS: FacilityStatus[] = ['良', '不可'];
 const DEFAULT_URL = 'https://script.google.com/macros/s/AKfycbzX9CPXHW93X4oKwVqZRwPjQEFeCFsaeDMH0B-KektszU_JL0w2eawZf3ZIx_W5bWzN/exec';
 
 const getApiUrl = (): string => {
-  /**
-   * Vite標準の環境変数。
-   * Vercelの管理画面で環境変数名「VITE_GOOGLE_SCRIPT_URL」として
-   * API URLを設定すると、ここから取得されます。
-   */
-  const envUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
-  
-  if (envUrl && envUrl.startsWith('http')) {
-    return envUrl;
+  try {
+    // Viteのビルド環境で import.meta が存在するか確認しながら取得
+    const env = (import.meta as any).env;
+    const envUrl = env?.VITE_GOOGLE_SCRIPT_URL;
+    
+    if (envUrl && typeof envUrl === 'string' && envUrl.startsWith('http')) {
+      return envUrl;
+    }
+  } catch (e) {
+    // フォールバック
   }
-  
   return DEFAULT_URL;
 };
 
